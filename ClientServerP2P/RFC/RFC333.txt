@@ -1,0 +1,137 @@
+Network Working Group                                       Bob Bressler
+Request for Comments: 333                           MIT/Dynamic Modeling
+NIC # 9926                                                    Dan Murphy
+Category: C9 (experimentation)                                 BBN/TENEX
+Obsoletes: 62                                                Dave Walden
+Updates: none                                                    BBN/IMP
+                                                             15 May 1972
+
+
+        A PROPOSED EXPERIMENT WITH A MESSAGE SWITCHING PROTOCOL
+
+
+CONTENTS
+
+   Introduction ..................................................  1
+   Some Background ...............................................  2
+   References ....................................................  3
+   MSP Specification .............................................  4
+   Issue .........................................................  8
+   Message Header ................................................ 10
+   Examples ...................................................... 15
+   TELNET ........................................................ 16
+   The Information Operator ...................................... 16
+   Unique Port Numbers ........................................... 20
+   Flow Chart .................................................... 23
+   MSP Variations ................................................ 25
+   Appendix ...................................................... 26
+
+INTRODUCTION
+
+   A message switching protocol (MSP) is a system whose function is to
+   switch messages among its ports.
+
+   For example, there is an implementation of an MSP in each Interface
+   Message Processor.  We believe that the effective utilization of
+   communications networks by computer operating systems will require a
+   better understanding of MSPs.  In particular, we feel that Network
+   Control Programs (NCPs), as they have been implemented on the ARPA
+   Computer Network (ARPANET), do not adequately emphasize the
+   communications aspects of networking -- i.e., they reflect a certain
+   reluctance on the part of systems people to move away from what we
+   term "the stream orientation".  We propose, as an aside the network
+   development using the current NCPs, to rethink the design of NCP-
+   level software beginning with a consideration of MSPs.
+
+   The thrust of this note is to sketch how one would organize the
+   lowest level host-host protocol in the ARPANET around MSPs and how
+   this organization would affect the implementation of host software.
+
+
+
+Bressler, et al.            Experimentation                     [Page 1]
+
+RFC 333          MESSAGE SWITCHING PROTOCOL EXPERIMENT          May 1972
+
+
+SOME BACKGROUND
+
+   Over the past several weeks there has been considerable informal
+   discussion about the possibility of implementing, on an experimental
+   basis, in several of the ARPA Network Host Computers, NCPs which
+   follow a protocol based on the concept of message switching rather
+   than the concept of line switching (see the parenthetical sentence in
+   the first paragraph of page 6 of NIC document 8246, Host/Host
+   Protocol for the ARPA Network).  Party to this discussion have been
+   Bob Bressler (MIT/Dynamic Modeling) Steve Crocker (ARPA), Will
+   Crowther (BBN/IMP), Tom Knight (MIT/AI), Alex McKenzie (BBN/IMP), Bob
+   Metcalfe (MIT/Dynamic Modeling), Dan Murphy (BBN/TENEX), Jon Postel
+   (UCLA/NMC), and Dave Walden (BBN/IMP).
+
+   Several interesting points and conclusions have been made during this
+   discussion:
+
+      1. Bressler has implemented a message switched interprocess
+         communication system for the Dynamic Modeling PDP-10 and has
+         extended it so it could be used for interprocess communication
+         between processes in the Dynamic Modeling PDP-10 and the AI
+         PDP-10.  He reports that it is something like an order of
+         magnitude smaller than his NCP.
+
+      2. Murphy has noted that a Host/Host protocol based on message
+         switching could be implemented experimentally and run in
+         parallel with the real Host/Host protocol using some of the
+         links set aside for experimentation.  Further, Murphy has noted
+         that if this experimental message switching protocol were
+         implemented in TENEX, a number of (TENEX) sites could easily
+         participate in the experiment.
+
+      3. It is the consensus of the discussants that Bressler should
+         take a crack at specifying a message switching protocol* and
+         that if this specification looked relatively easy to implement,
+         a serious attempt should be made by Murphy and Bressler to find
+         the resources to implement the experimental protocol on the two
+         BBN TENEX and the MIT Dynamic Modeling and AI machines.
+
+      4. MSP was chosen as the acronym for Message Switching Protocol,
+         and links 192-195 were reserved for use in an MSP experiment.
+
+
+
+   -------------
+   *This note fulfills any obligation Bressler may have incurred to
+   produce an MSP specification.
+
+
+
+
+Bressler, et al.            Experimentation                     [Page 2]
+
+RFC 333          MESSAGE SWITCHING PROTOCOL EXPERIMENT          May 1972
+
+
+   We solicit comments and suggestions from the Network Working Group
+   with regard to this experiment.  However, although we will very much
+   appreciate comments and suggestions, because this is a limited
+   experiment and not an attempt to specify a protocol to supersede the
+   present Host/Host protocol for the ARPA Network, we may arbitrarily
+   reject suggestions.
+
+REFERENCES
+
+   Familiarly with the following references will be helpful to the
+   reading of the rest of this note.
+
+      1) NIC document 8246, HOST/HOST PROTOCOL FOR THE ARPA NETWORK
+
+      2) NIC document 9348 on the Telnet Protocol
+
+      3) NIC document 7101, OFFICIAL INITIAL CONNECTION PROTOCOL,
+         DOCUMENT # 2
+
+      4) a system of interprocess communication in a resource sharing
+         computer network, CACM, April, 1972.
+
+   Reference 4 is a revision of RFC 62.  We strongly suggest the reader
+   be familiar with reference 4 before he attempts to read the present
+   RFC; a reprint of reference 4 is attached as an appendix.
