@@ -12,14 +12,14 @@ Note: We have tested the project in Windows OS.
 Steps to run the server code:
 -----------------------------
 1. In command prompt, go to the location of the “src” directory of the project
-2. Compile the code by executing the command: javac mypack\serverSocket.java
+2. Compile the code by executing the command: javac mypack/serverSocket.java
 3. Run the code by executing the command: java mypack.serverSocket #port
    #port - port number at which to start the server
 
 Steps to run the client code:
 -----------------------------
 1. In command prompt, go to the location of the “src” directory of the project
-2. Compile the code by executing the command: javac mypack\clientSocket.java
+2. Compile the code by executing the command: javac mypack/clientSocket.java
 3. Run the code by executing the command: java mypack.clientSocket #ipaddress #port
    #ipaddress - ip at which the server is running
    #port - port number at which to start the server
